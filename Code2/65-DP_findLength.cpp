@@ -24,17 +24,11 @@ int findLength(vector<int>& nums1, vector<int>& nums2) {
   return result;
 }
 
-// dp[i][j]为，以第i、j个元素（下标i-1，j-1）为结尾的子数组，最长重复子数组长度。
+// dp[i][j]含义为，以第i、j个元素（下标i-1，j-1）为结尾的子数组，最长重复子数组长度。
 // 相应地，子数组末尾元素是nums1[i-1]和num2[j-1]
-// 初始化注意，dp[i][j]不能表示i、j下标为结尾的子数组，
-// 因为递推公式dp[i][j]=dp[i-1][j-1]+1，第一个元素不好考虑。
-// 一维数组注意两点。一、由于dp[i][j]由左上角数值得来，故dp[j]内部要从右往左遍历。
-// 二、dp转移至下一层时，末尾元素不等时要置0
+// 初始化注意，dp[i][j]不表示i、j下标为结尾的子数组。i、j从1开始遍历，初始值设置为0。
+// 递推公式，当两个子数组末尾元素相等时，该处长度+1，dp[i][j]=dp[i-1][j-1]+1
 
-// dp[i][j]含义是第i、j个元素（即i-1,j-1位置）上的元素为结尾时，最长重复子数组长度
-// 初始化，i、j从1开始遍历，初始值全部设置为0。
-// 递推公式，当两个子数组，末尾元素相等时nums1[i-1]==nums2[j-1]，则该处长度+1。
-// dp[i][j]=dp[i-1][j-1]+1
 int findLength1(vector<int>& nums1, vector<int>& nums2) {
   vector<vector<int>> dp(nums1.size() + 1, vector<int>(nums2.size() + 1, 0));
   int result = 0;
@@ -48,8 +42,9 @@ int findLength1(vector<int>& nums1, vector<int>& nums2) {
   return result;
 }
 
-// 一维数组。节省空间复杂度。但是内层遍历必须从右向左遍历
-// 另外对于该层，两个子数组尾元素不等时，dp[j]置0，否则会遗传上一轮i的值
+// 一维数组，节省空间复杂度。但是注意两点：
+// 一、由于dp[i][j]由左上角数值得来，故dp[j]内部要从右往左遍历。或者临时保存左上值
+// 二、对于该层，dp转移至下一层时，两个子数组尾元素不等，dp[j]置0，否则会遗传上一轮i的值
 int findLength2(vector<int>& nums1, vector<int>& nums2) {
   vector<int> dp(nums2.size() + 1, 0);
   int result = 0;

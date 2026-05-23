@@ -48,7 +48,8 @@ int maxProfit1(vector<int>& prices, int fee) {
 
 // 贪心算法。情况一，持有价格在某区间内不动，因为此时卖了就亏。
 // 情况二，价格比最低价低，此时买入。情况三、价格更高，收利润
-// 收利润时，注意同步更新最低价格，其不是当前股票价格，而是做出-fee的补偿。因为以后在卖的时候，就不用付费了
+// 收利润时，注意同步更新最低价格，其不是当前股票价格，而是做出-fee的补偿。
+// 因为以后在卖的时候，就不用付费了
 int maxProfit2(vector<int>& prices, int fee) {
   int result = 0;
   int minPrice = prices[0];

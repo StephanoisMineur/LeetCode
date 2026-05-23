@@ -39,7 +39,7 @@ int maxSubArray1(vector<int>& nums) {
   return result;
 }
 
-// 贪心，返回结果，一定初始化为首元素值，不能为0。
+// 贪心，返回的结果值，一定初始化为首元素值，不能为0，因为数组中可能有负数
 // 保存到i前最大子数组pre，如果其为负即舍弃，为正即相加。返回值根据pre实时更新
 // 动态规划。dp[i]表示以i结尾的连续子数组和最大值，不一定在最后一个元素。
 // dp[i]基础为nums[i]，是否加dp[i-1]取决于其是否为正
@@ -55,10 +55,10 @@ int maxSubArray2(vector<int>& nums) {
 
 int main() {
   vector<int> nums1 = {-2, 1, -3, 4, -1, 2, 1, -5, 4}, nums2 = {1},
-              nums3 = {5, 4, -1, 7, 8};
+              nums3 = {5, 4, -1, 7, 8}, nums4 = {-1};
   cout << maxSubArray(nums1) << " " << maxSubArray(nums2) << " "
-       << maxSubArray(nums3) << endl;
+       << maxSubArray(nums3) << " " << maxSubArray(nums4) << endl;
   cout << maxSubArray1(nums1) << " " << maxSubArray1(nums2) << " "
-       << maxSubArray1(nums3) << endl;
+       << maxSubArray1(nums3) << " " << maxSubArray1(nums4) << endl;
   return 0;
 }
