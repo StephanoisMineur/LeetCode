@@ -46,7 +46,7 @@ vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
 // 由于找不到元素返回-1，故所有元素初始化为-1
 // 对于nums2进行从栈底到栈顶的从大到小排列，可求第一个大于该元素的值。
 // 如果新元素小于等于栈顶元素，直接入栈nums2[i]<=nums2[st.top()]
-// 如果新元素大于栈顶元素，则必须将栈顶元素弹出，直至栈顶元素为小于栈内元素。
+// 如果新元素大于栈顶元素，则必须将栈顶元素弹出，直至栈顶元素为小于栈内元素
 // 弹出过程中，如果发现即将弹出的是nums1中的元素(使用count判断)
 // 获取nums1元素中的下标index，然后在结果数组中，使用下标记录该处nums2[i]，即为下一个更大的元素
 vector<int> nextGreaterElement1(vector<int>& nums1, vector<int>& nums2) {

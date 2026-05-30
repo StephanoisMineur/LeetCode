@@ -28,7 +28,7 @@ vector<int> nextGreaterElements(vector<int>& nums) {
   return ans;
 }
 
-// 两个数组收尾拼接，即模拟成环。实际可利用i%n操作下标，模拟两次遍历。
+// 两个数组收尾拼接，即模拟成环。实际可利用i%n操作下标，模拟两次遍历
 // 可以不使用insert扩容，多了O(n)操作。直接模拟两边遍历，取值i%nums.size()即可
 vector<int> nextGreaterElements1(vector<int>& nums) {
   vector<int> answer(nums.size(), -1);

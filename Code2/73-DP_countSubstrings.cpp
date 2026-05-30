@@ -42,7 +42,8 @@ int countSubstrings(string s) {
 // dp[i][j]并不代表以i开始j结尾的回文子串数，而代表i开始j结束是否为回文子串。
 // 故全部初始化为false，额外使用result计数回文子串数
 // 当发现子串首位相等，即s[i]==s[j]时，分三种情况，
-// 1.只有一个字母，为真；2.两个字母，为真；3.三个字母，为真；4.三个字母以上，看dp[i+1][j-1]即更小子串结果
+// 1.只有一个字母，为真；2.两个字母，为真；3.三个字母，为真；
+// 4.三个字母以上，看dp[i+1][j-1]即更小子串结果
 // 因此，遍历顺序必为从坐下至右上。最终返回值，即为计数的回文子串数
 int countSubstrings1(string s) {
   vector<vector<bool>> dp(s.size(), vector<bool>(s.size(), false));
