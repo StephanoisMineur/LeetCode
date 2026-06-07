@@ -67,7 +67,8 @@ int islandPerimeter1(vector<vector<int>>& grid) {
   return result;
 }
 
-// 方法二，边数=岛屿数量*4-相邻岛屿对数*2。计算相邻岛屿对数时，只考虑左、上两个方向。避免重复计算
+// 方法二，边数=岛屿数量*4-相邻岛屿对数*2。
+// 计算相邻岛屿对数时，只考虑左、上两个方向。避免重复计算
 int islandPerimeter2(vector<vector<int>>& grid) {
   int m = grid.size(), n = grid[0].size();
   int result = 0;

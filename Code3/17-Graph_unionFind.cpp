@@ -58,7 +58,7 @@ bool isSame1(int u, int v) {
   return u == v;
 }
 
-// 沿v->u 将u加入并查集。
+// 沿v->u 将u加入并查集
 void join1(int u, int v) {
   u = find1(u);
   v = find1(v);
@@ -67,7 +67,7 @@ void join1(int u, int v) {
   father1[v] = u;
 }
 
-// join函数不能使用isSame简写,因为这是将原始的v->u，
+// join函数不能使用isSame简写,因为这是将原始的v->u
 void join_wrong1(int u, int v) {
   if (isSame(u, v))
     return;

@@ -67,7 +67,8 @@ vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
 // 如果内陆某个点同时来自大西洋和太平洋，即为所求结点。
 // dfs中的visited为形参，已访问矩阵，实参为大西洋和太平洋矩阵。
 // 超出界外跳过。由于从低向高搜索，碰到更低洼的地即跳过。
-// 时间复杂度不是(n+m)*m*n，注意到结点，对于大西洋和太平洋两个矩阵访问一次，之后不会再次访问，故时间复杂度2*m*n，空间复杂度2*m*n
+// 时间复杂度不是(n+m)*m*n，注意到结点，对于大西洋和太平洋两个矩阵访问一次，之后不会再次访问，
+// 故时间复杂度2*m*n，空间复杂度2*m*n
 int dir[4][2] = {1, 0, -1, 0, 0, 1, 0, -1};
 void dfs1(vector<vector<int>>& heights,
           vector<vector<bool>>& visited,

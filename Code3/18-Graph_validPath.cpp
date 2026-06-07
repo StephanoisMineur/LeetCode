@@ -52,7 +52,7 @@ bool validPath(int n, vector<vector<int>>& edges, int source, int destination) {
 
 // 并查集基础题目，题目中n无用。find()函数中最终返回的是父节点
 // 无向图，可以使用并查集来判断是否联通。查并集标准题目。注意外部定义最大结点数
-// 对于每一个edges，将对应两个结点joint，最后判断起始两结点是否isSame
+// 对于每一个edges，将对应两个结点join，最后判断起始两结点是否isSame
 // 结点总数，一定要外部定义，比最大的大一些即可。father要特殊初始化
 int n1 = 200005;
 vector<int> father1 = vector<int>(n1, 0);
