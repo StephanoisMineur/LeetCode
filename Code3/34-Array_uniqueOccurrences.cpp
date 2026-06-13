@@ -33,9 +33,9 @@ bool uniqueOccurrences(vector<int>& arr) {
 }
 
 // 哈希表。由于数值范围[-1000,1000]，总计2001个，故使用数组作为map映射
-// 统计每个数的出现次数，数字下标+1000保证其非负。
+// 统计每个数的出现次数，数字下标+1000保证其非负
 // arr.length范围[1,1000]，故数字最多出现1000次，故使用数组作为set集合
-// 遍历每个出现次数，是否此前出现过。
+// 遍历每个出现次数，是否此前出现过
 bool uniqueOccurrences1(vector<int>& arr) {
   int cnt[2002] = {0};
   for (int i = 0; i < arr.size(); i++)
