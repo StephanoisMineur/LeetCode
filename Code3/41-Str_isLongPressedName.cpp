@@ -2,7 +2,8 @@
 /* 925. 长按键入
 你的朋友正在使用键盘输入他的名字 name。偶尔，在键入字符 c
 时，按键可能会被长按，而字符可能被输入 1 次或多次。
-你将会检查键盘输入的字符typed。如果它对应的可能是你的朋友的名字（其中一些字符可能被长按），
+你将会检查键盘输入的字符typed。
+如果它对应的可能是你的朋友的名字（其中一些字符可能被长按），
 那么就返回 True。
 示例 1：
   输入：name = "alex", typed = "aaleex"
@@ -32,7 +33,8 @@ bool isLongPressedName(string name, string typed) {
 }
 
 // 要求顺序匹配，双指针。如果双方字母匹配上，i,j位置各加1，
-// 若匹配不上，且不是首位，单移动j，保证去重
+// 若匹配不上，且不是首位，说明已匹配过一次，若j-1和j值相等，正好去重
+// 注意，每轮j只会移动一次。所以不是匹配过了，就立刻去重。不会漏掉aab和ab这种特殊情况
 // 返回假三种情况：1.i已先于j耗尽。
 // 2.首位就匹配不上，例如b和xxb，无需去重。3.直接匹配不上，且不符合去重条件
 // j到末端后，观察i位置，及name是否所有元素都被匹配，如果是，则返回真，否
@@ -57,15 +59,21 @@ int main() {
   string name3 = "rick", typed3 = "kric";
   string name4 = "leelee", typed4 = "lleeelee";
   string name5 = "alex", typed5 = "aaleexa";
+  string name6 = "vtkgn", typed6 = "vttkgnn";
+  string name7 = "alexd", typed7 = "ale";
   cout << isLongPressedName(name1, typed1) << " "
        << isLongPressedName(name2, typed2) << " "
        << isLongPressedName(name3, typed3) << " "
        << isLongPressedName(name4, typed4) << " "
-       << isLongPressedName(name5, typed5) << endl;
+       << isLongPressedName(name5, typed5) << " "
+       << isLongPressedName(name6, typed6) << " "
+       << isLongPressedName(name7, typed7) << endl;
   cout << isLongPressedName1(name1, typed1) << " "
        << isLongPressedName1(name2, typed2) << " "
        << isLongPressedName1(name3, typed3) << " "
        << isLongPressedName1(name4, typed4) << " "
-       << isLongPressedName1(name5, typed5) << endl;
+       << isLongPressedName1(name5, typed5) << " "
+       << isLongPressedName1(name6, typed6) << " "
+       << isLongPressedName1(name7, typed7) << endl;
   return 0;
 }

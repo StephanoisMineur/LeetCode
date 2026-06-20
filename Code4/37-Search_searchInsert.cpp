@@ -1,6 +1,7 @@
 #include "head.h"
 /* 35. 搜索插入位置
-给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
+给定一个排序数组和一个目标值，在数组中找到目标值，并返回其索引。
+如果目标值不存在于数组中，返回它将会被按顺序插入的位置。
 请必须使用时间复杂度为 O(log n) 的算法。
 示例 1:
   输入: nums = [1,3,5,6], target = 5
@@ -24,7 +25,8 @@ int searchInsert(vector<int>& nums, int target) {
   return l;
 }
 
-// 二分法。注意位运算替代/2操作，其优先级小于+-*/。另外，左闭右闭区间，target<=中值，右边界左移，保证target一定大于right。
+// 二分法。注意位运算替代/2操作，其优先级小于+-*/。
+// 另外，左闭右闭区间，target<=中值，右边界左移，保证target一定大于right。
 // 否则左边界右移，保证target一定小于等于left。left即为大于等于target的第一个数值
 int searchInsert1(vector<int>& nums, int target) {
   int left = 0, right = nums.size() - 1;
@@ -42,7 +44,8 @@ int searchInsert2(vector<int>& nums, int target) {
   return lower_bound(nums.begin(), nums.end(), target) - nums.begin();
 }
 
-// 传统左闭右闭写法。元素分四种情况讨论，1.比最小的元素还小，2.等于数组中某元素，3.处于数组某区间，4.比最大的元素还大
+// 传统左闭右闭写法。元素分四种情况讨论，
+// 1.比最小的元素还小，2.等于数组中某元素，3.处于数组某区间，4.比最大的元素还大
 int searchInsert3(vector<int>& nums, int target) {
   int left = 0, right = nums.size() - 1;
   while (left <= right) {  // 左右边界相等时仅有一个元素，有意义

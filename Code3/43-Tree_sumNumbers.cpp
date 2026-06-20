@@ -50,8 +50,8 @@ int sumNumbers(TreeNode* root) {
 
 // 完全可以不用vector存储临时路径，深度优先搜索，保证无空结点进入递归。
 // 入参path表示当前结点前，总路径和
-// 鉴于进入递归的必不为空。故第一件事就是将path更新为至本层路径总和。
-// 如此发现是叶子结点，更新ans
+// 鉴于进入递归的必不为空。故第一件事就是，将path更新为至本层路径总和
+// 如此发现是叶子结点，更新ans，直接返回
 // 对左、右孩子存在的情况，依次进入下一层递归
 void dfs1(TreeNode* root, int path, int& ans) {
   path = path * 10 + root->val;
