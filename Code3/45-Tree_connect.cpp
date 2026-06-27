@@ -88,6 +88,28 @@ Node* connect2(Node* root) {
   return root;
 }
 
+// 利用上一层为本层搭桥。无需要求是完全二叉树
+Node* connect3(Node* root) {
+  Node* father = root;
+  while (father) {
+    Node* dummy = new Node();
+    Node* cur = dummy;
+    while (father) {
+      if (father->left) {
+        cur->next = father->left;
+        cur = cur->next;
+      }
+      if (father->right) {
+        cur->next = father->right;
+        cur = cur->next;
+      }
+      father = father->next;
+    }
+    father = dummy->next;
+  }
+  return root;
+}
+
 int main() {
   return 0;
 }
