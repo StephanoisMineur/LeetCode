@@ -1,8 +1,8 @@
 #include "head.h"
 /* 367. 有效的完全平方数
 给你一个正整数 num 。如果 num 是一个完全平方数，则返回 true ，否则返回 false 。
-完全平方数
-是一个可以写成某个整数的平方的整数。换句话说，它可以写成某个整数和自身的乘积。
+完全平方数是一个可以写成某个整数的平方的整数。
+换句话说，它可以写成某个整数和自身的乘积。
 不能使用任何内置的库函数，如  sqrt 。
 示例 1：
   输入：num = 16
@@ -56,9 +56,12 @@ bool isPerfectSquare2(int num) {
   return num == 0;
 }
 
-// 牛顿迭代法Newton_Raphson_method。x^2-n=0方程求导，构造斜线(y-y0)=2x0(x-x0)。y=2x*x0-x0^2-n。解得x=1/2*(x0+n/x0)
+// 牛顿迭代法Newton_Raphson_method。
+// x^2-n=0方程求导，构造斜线(y-y0)=2x0(x-x0)。y=2x*x0-x0^2-n。
+// 解得x=1/2*(x0+n/x0)
 // 时间复杂度O(logN)，但是底数为4，比二分法更优
-// 易错点：1.使用double而非float。2.判断误差标准一般位1e-6，可使用numeric_limits模板类定义的最小精度epsilon()。
+// 易错点：1.使用double而非float。
+// 2.判断误差标准一般位1e-6，可使用numeric_limits模板类定义的最小精度epsilon()。
 // 3.收敛后，要先取整int，再乘方与原数比较，不是两个float相乘的结果再取整int
 bool isPerfectSquare3(int num) {
   double x0 = 0;

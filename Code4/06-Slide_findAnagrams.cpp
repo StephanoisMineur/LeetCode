@@ -40,9 +40,12 @@ vector<int> findAnagrams(string s, string p) {
   return ans;
 }
 
-// p的长度即为滑动窗口大小，比较是否字母异位词，实质是比较该窗口每个字母出现的频次是否相等，直接使用一个26个字母的数组记录。vector可以直接判断相等与否
-// C++中，简单类型两个vector可以直接==,!=,>,<比较。先排除s比p短的特殊情况，设定每个字符串字符出现频率的数组sCount。
-// 滑动窗口大小为pLen，首个滑动窗口要特殊处理，看是否相等。之后对sCount进行移动，如果s窗口等于p，则压入下标i+1
+// p的长度即为滑动窗口大小，比较是否字母异位词，实质是比较该窗口每个字母出现的频次是否相等，
+// 直接使用一个26个字母的数组记录。vector可以直接判断相等与否
+// C++中，简单类型两个vector可以直接==,!=,>,<比较。
+// 先排除s比p短的特殊情况，设定每个字符串字符出现频率的数组sCount。
+// 滑动窗口大小为pLen，首个滑动窗口要特殊处理，看是否相等。
+// 之后对sCount进行移动，如果s窗口等于p，则压入下标i+1
 vector<int> findAnagrams1(string s, string p) {
   vector<int> ans;
   int sLen = s.size(), pLen = p.size();

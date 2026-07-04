@@ -33,7 +33,8 @@ int lengthOfLongestSubstring(string s) {
 }
 
 // 滑动窗口，核心是保证窗口内无重复元素，应使用集合uset。遍历控制右指针i。
-// 只要新s[i]在uset内出现过，就不断弹出左指针元素j，并移动左指针，直至uset内没有即将重新入列的新s[i]为止，新元素加入uset后，计算此时字串长度。
+// 只要新s[i]在uset内出现过，就不断弹出左指针元素j，并移动左指针，
+// 直至uset内没有即将重新入列的新s[i]为止，新元素加入uset后，计算此时字串长度。
 int lengthOfLongestSubstring1(string s) {
   unordered_set<char> uset;
   int j = 0;

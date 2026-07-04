@@ -22,7 +22,7 @@ void rotate(vector<int>& nums, int k) {
   reverse(nums.begin() + k, nums.end());
 }
 
-// 方法一，使用额外数组，原数组i向右移动k步，故在新数组的位置为(i+k)%n。
+// 方法一，使用额外数组，原数组i向右移动k步，故在新数组的位置为(i+k)%n
 // 使用assign函数将其赋值到原数组上。空间复杂度O(n)
 void rotate1(vector<int>& nums, int k) {
   int n = nums.size();
@@ -33,7 +33,7 @@ void rotate1(vector<int>& nums, int k) {
 }
 
 // 方法二，推荐三次反转数组。核心在于将后k%n个元素放置于队首。
-// 故先全部反转，在分别反转[0,k%n-1]和[k&n,n-1]两个区间。
+// 故先全部反转，在分别反转[0,k%n-1]和[k%n,n-1]两个区间。
 // 时间复杂度2n，因为每个元素仅反转两次，空间复杂度1
 void rotate2(vector<int>& nums, int k) {
   k %= nums.size();
