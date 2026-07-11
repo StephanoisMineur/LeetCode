@@ -36,8 +36,10 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 }
 
 // 模拟，为避免两链表不等长，对短的一个补零，即循环中任意链表不为空即可，移动指针必须不为空才能移动
-// 外置进位carry标识，进位与否可以直接/10得到。头指针head和移动指针p初始化为空，生成头节点时，head和p均赋值
-// 其余结点时，p->next生成新节点赋值，并移动p。时间复杂度O(max(m,n))，空间复杂度O(1)
+// 外置进位carry标识，进位与否可以直接/10得到。
+// 头指针head和移动指针p初始化为空，生成头节点时，head和p均赋值
+// 其余结点时，p->next生成新节点赋值，并移动p。
+// 时间复杂度O(max(m,n))，空间复杂度O(1)
 ListNode* addTwoNumbers1(ListNode* l1, ListNode* l2) {
   ListNode* head = nullptr;
   ListNode* p = nullptr;

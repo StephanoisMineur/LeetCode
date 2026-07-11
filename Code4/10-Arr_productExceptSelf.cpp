@@ -25,7 +25,8 @@ vector<int> productExceptSelf(vector<int>& nums) {
   return ans;
 }
 
-// 类似双指针接雨水，两个数组两次遍历，分别保存i处，左侧所有元素乘积，和右侧所有元素乘积。再次遍历，求每个位置左右积之积
+// 类似双指针接雨水，两个数组两次遍历，分别保存i处，左侧所有元素乘积，和右侧所有元素乘积。
+// 再次遍历，求每个位置左右积之积
 vector<int> productExceptSelf1(vector<int>& nums) {
   int n = nums.size();
   vector<int> L(n, 0), R(n, 0);
@@ -40,8 +41,10 @@ vector<int> productExceptSelf1(vector<int>& nums) {
   return ans;
 }
 
-// 空间复杂度O(1)优化，因为输出数组不计入空间复杂度。将返回ans和左侧乘积L功能合并，右侧乘积R计算和第三次遍历求结果合并。
-// 右测乘积使用单个int，从末元素向左遍历，先利用原L数值更新结果ans，在更新右侧乘积值R
+// 空间复杂度O(1)优化，因为输出数组不计入空间复杂度。
+// 将返回ans和左侧乘积L功能合并，右侧乘积R计算和第三次遍历求结果合并。
+// 右侧乘积使用单个int，从末元素向左遍历
+// 原L保存着不含i位，再往左侧的乘积，乘以right即为最终结果ans，再更新右侧乘积值right
 vector<int> productExceptSelf2(vector<int>& nums) {
   int n = nums.size();
   vector<int> ans(n, 0);

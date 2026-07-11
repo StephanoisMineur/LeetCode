@@ -33,7 +33,8 @@ vector<int> spiralOrder(vector<vector<int>>& matrix) {
   return ans;
 }
 
-// 设置上下左右四个边界，不断缩进遍历。注意，每次移动标志位，要立刻判断是否超界并break。使用++i>j，先移动，在判断。
+// 设置上下左右四个边界，不断缩进遍历。
+// 注意，每次移动标志位，要立刻判断是否超界并break。使用++i>j，先移动，再判断。
 vector<int> spiralOrder1(vector<vector<int>>& matrix) {
   int left = 0, right = matrix[0].size() - 1, top = 0,
       bottom = matrix.size() - 1;

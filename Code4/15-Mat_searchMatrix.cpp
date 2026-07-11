@@ -13,7 +13,11 @@
   输出：true
 示例 2：
   输入：matrix =
-    [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]],
+      [[1,4,7,11,15],
+      [2,5,8,12,19],
+      [3,6,9,16,22],
+      [10,13,14,17,24],
+      [18,21,23,26,30]],
         target = 20
   输出：false */
 
@@ -30,8 +34,10 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
   return false;
 }
 
-// 首选Z形查找。矩阵大小m*n，从右上角[0,n-1]开始，若matrix[i][j]小，则向左j--，若matrix[i][j]大，则向下i++。最终找不到即返回假。
-// 推荐从左下角往上找，不推荐右上角，因为可能matrix为空，就没有第一行，故不能直接访问matrix[0]。因为时间复杂度O(m+n)
+// 首选Z形查找。矩阵大小m*n，从右上角[0,n-1]开始
+// 若matrix[i][j]小，则向左j--，若matrix[i][j]大，则向下i++。最终找不到即返回假。
+// 推荐从左下角往上找，不推荐右上角，
+// 因为可能matrix为空，就没有第一行，故不能直接访问matrix[0]。时间复杂度O(m+n)
 bool searchMatrix1(vector<vector<int>>& matrix, int target) {
   int m = matrix.size(), n = matrix[0].size();
   int i = 0, j = n - 1;

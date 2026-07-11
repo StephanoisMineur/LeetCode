@@ -34,8 +34,10 @@ int firstMissingPositive(vector<int>& nums) {
   return n + 1;
 }
 
-// 方法一，数组自身哈希表。利用原数组下标i，负号标记数字i+1的有无。一个数组，两套信息。三次遍历，第一步，负数和0，全部标记为N+1。
-// 第二步，下标索引后绝对值在[1,n]间的数字num，强制标记下标num-1数字为负，原来为负，仍旧为负。第三步，遍历首次遇到正值时，返回i+1，否则返回n+1
+// 方法一，数组自身哈希表。利用原数组下标i，负号标记数字i+1的有无。
+// 一个数组，两套信息。三次遍历，第一步，负数和0，全部标记为N+1。
+// 第二步，下标索引后绝对值在[1,n]间的数字num，强制标记下标num-1数字为负，原来为负，仍旧为负。
+// 第三步，遍历首次遇到正值时，返回i+1，否则返回n+1
 int firstMissingPositive1(vector<int>& nums) {
   int n = nums.size();
   for (int i = 0; i < n; i++) {
@@ -55,7 +57,8 @@ int firstMissingPositive1(vector<int>& nums) {
   return n + 1;
 }
 
-// 推荐方法二，置换。将nums[i]元素换至nums[nums[i]-1]位置。退出条件为二者不相等，或新下标nums[i]-1位置不合法。
+// 推荐方法二，置换。将nums[i]元素换至nums[nums[i]-1]位置。
+// 退出条件为二者不相等，或新下标nums[i]-1位置不合法。
 // 最终遍历，nums[i]不是i+1，即返回
 int firstMissingPositive2(vector<int>& nums) {
   int n = nums.size();

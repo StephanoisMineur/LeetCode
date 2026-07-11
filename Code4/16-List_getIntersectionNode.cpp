@@ -49,9 +49,12 @@ ListNode* getIntersectionNode(ListNode* headA, ListNode* headB) {
   return p;
 }
 
-// 双指针简写法。A、B若有一方为空，必不相交，排除。pA、pB分别向后遍历，pA到底后指向headB，pB到底后指向headA。
-// 若有相交，则双方经过a+b+c相同步数后，pA==pB。若不相交，双方经过m+n相同步数后，pA==pB==nullptr。二者均可返回pA。时间复杂度O(m+n)
-// 注意语言优先级，7级==，11级&&，12级||，13级三目运算，14级赋值=，+=，/=等。故赋值符号后使用三目，可以不加括号
+// 双指针简写法。A、B若有一方为空，必不相交，排除。
+// pA、pB分别向后遍历，pA到底后指向headB，pB到底后指向headA。
+// 若有相交，则双方经过a+b+c相同步数后，pA==pB。
+// 若不相交，双方经过m+n相同步数后，pA==pB==nullptr。二者均可返回pA。时间复杂度O(m+n)
+// 注意语言优先级，7级==，11级&&，12级||，13级三目运算，14级赋值=，+=，/=等。
+// 故赋值符号后使用三目，可以不加括号
 ListNode* getIntersectionNode1(ListNode* headA, ListNode* headB) {
   if (!headA || !headB)
     return nullptr;
@@ -64,7 +67,8 @@ ListNode* getIntersectionNode1(ListNode* headA, ListNode* headB) {
   return pA;
 }
 
-// 传统方法。1、分别求A、B长度；2、保证A比B长，如不是则交换；3、长链表先走x步，x为两链表长度之差。
+// 传统方法。1、分别求A、B长度；2、保证A比B长，如不是则交换；
+// 3、长链表先走x步，x为两链表长度之差。
 // 4、双指针同步向后移动，如果结点相等（非值相等）则返回
 ListNode* getIntersectionNode2(ListNode* headA, ListNode* headB) {
   int lenA = 0, lenB = 0;

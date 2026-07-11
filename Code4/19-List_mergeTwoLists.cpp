@@ -27,7 +27,8 @@ ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
 }
 
 // 迭代法。设立虚拟头节点，对l1和l2元素一一比较，值小的承接p指针，并挪动l1、l2和p。
-// 由于l1和l2最终指向未处理结点，故一为空时，p指向不为空的结点，返回虚拟头节点的下一节点。时间复杂度O(m+n)空间复杂度O(1)
+// 由于l1和l2最终指向未处理结点，故一为空时，p指向不为空的结点，返回虚拟头节点的下一节点
+// 时间复杂度O(m+n)空间复杂度O(1)
 ListNode* mergeTwoLists1(ListNode* list1, ListNode* list2) {
   ListNode* dummy = new ListNode(-1);
   ListNode* p = dummy;
@@ -45,7 +46,8 @@ ListNode* mergeTwoLists1(ListNode* list1, ListNode* list2) {
   return dummy->next;
 }
 
-// 递归，将L1与L2小的一个结点在该层保留，传入下一个结点入递归。时间、空间复杂度均为O(m+n)
+// 递归，将L1与L2小的一个结点在该层保留，传入下一个结点入递归。
+// 时间、空间复杂度均为O(m+n)
 ListNode* mergeTwoLists2(ListNode* list1, ListNode* list2) {
   if (!list1)
     return list2;
