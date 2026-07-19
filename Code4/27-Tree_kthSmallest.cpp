@@ -29,7 +29,8 @@ int kthSmallest(TreeNode* root, int k) {
   return cur->val;
 }
 
-// 二叉搜索树性质，中序遍历，使用迭代法可不遍历整棵树。处理结点方式为k--，一旦k==0即停止，不必向右转移。此时cur即指向第k个最小元素
+// 二叉搜索树性质，中序遍历，使用迭代法可不遍历整棵树。
+// 处理结点方式为k--，一旦k==0即停止，不必向右转移。此时cur即指向第k个最小元素
 int kthSmallest1(TreeNode* root, int k) {
   stack<TreeNode*> st;
   TreeNode* cur = root;
@@ -49,8 +50,11 @@ int kthSmallest1(TreeNode* root, int k) {
   return cur->val;
 }
 
-// 统计每一个结点，以此为根的结点数。单独设立一个类，内含哈希表，统计每一个结点及其下属数量。private两个函数，一是统计数量，二是反馈哈希表值
-// public两个函数，一是构造确定根结点，统计数量填充哈希表。二是反馈第k小的结点值。逻辑为，看当前node->left数量，若left<k+1说明结点在右子树，node右移，并更新k
+// 统计每一个结点，以此为根的结点数。
+// 单独设立一个类，内含哈希表，统计每一个结点及其下属数量。
+// private两个函数，一是统计数量，二是反馈哈希表值
+// public两个函数，一是构造确定根结点，统计数量填充哈希表。
+// 二是反馈第k小的结点值。逻辑为，看当前node->left数量，若left<k+1说明结点在右子树，node右移，并更新k
 // 若left>k+1说明在左子树，node左移，若二者相等。则break，即为该结点值。
 class MyBst {
  public:

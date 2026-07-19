@@ -42,10 +42,13 @@ ListNode* reverseKGroup(ListNode* head, int k) {
   return dummy->next;
 }
 
-// 先写反转区间链表函数，其输入和输出均为头尾两个结点值。注意pre初始化为tail->next，p也必须终止于该结点
+// 先写反转区间链表函数，其输入和输出均为头尾两个结点值。
+// 注意pre初始化为tail->next，p也必须终止于该结点
 // 新首元素pre与老tail相遇即结束，不能写作p!=tail->next，因为tail指向已改变
-// 主函数，使用[head,tail]记录区间的首尾，while内为head存在，先移动tail,不足k不直接退出。如以满足，反转[head,tail]
-// 可以使用C++17新特性tie。利用pre和tail->next对新区间连接，并更新pre,head位置，时间复杂度O(1)
+// 主函数，使用[head,tail]记录区间的首尾
+// while内为head存在，先移动tail,不足k不直接退出。如以满足，反转[head,tail]
+// 可以使用C++17新特性tie。利用pre和tail->next对新区间连接，并更新pre,head位置
+// 时间复杂度O(1)
 pair<ListNode*, ListNode*> myReverse1(ListNode* head, ListNode* tail) {
   ListNode* pre = tail->next;
   ListNode* p = head;

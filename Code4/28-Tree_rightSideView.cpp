@@ -1,7 +1,7 @@
 #include "head.h"
 /* 199. 二叉树的右视图
-给定一个二叉树的 根节点
-root，想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。
+给定一个二叉树的 根节点 root，
+想象自己站在它的右侧，按照从顶部到底部的顺序，返回从右侧所能看到的节点值。
 示例 1:
   输入: [1,2,3,null,5,null,4]
   输出: [1,3,4]
@@ -31,7 +31,8 @@ vector<int> rightSideView(TreeNode* root) {
   return ans;
 }
 
-// 深度优先搜索，变前序遍历，迭代法，中右左。使用栈记录结点和层数，哈希表记录层数和该层最右值。如此遍历哈希表可得所有最右元素
+// 深度优先搜索，变前序遍历，迭代法，中右左。
+// 使用栈记录结点和层数，哈希表记录层数和该层最右值。如此遍历哈希表可得所有最右元素
 vector<int> rightSideView1(TreeNode* root) {
   stack<pair<TreeNode*, int>> st;
   vector<int> ans;
@@ -58,7 +59,8 @@ vector<int> rightSideView1(TreeNode* root) {
   return ans;
 }
 
-// 不用哈希表，逆前序遍历时，首次突破最深深度结点，即为所需右视图值，而ans.size()正好为已记录的右视图结点层数
+// 不用哈希表，逆前序遍历时，首次突破最深深度结点，即为所需右视图值
+// 而ans.size()正好为已记录的右视图结点层数
 vector<int> rightSideView3(TreeNode* root) {
   vector<int> ans;
   stack<pair<TreeNode*, int>> st;

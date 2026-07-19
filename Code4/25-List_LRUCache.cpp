@@ -4,27 +4,28 @@
 实现 LRUCache 类：
     LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存
     int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1
-。 void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value
-；如果不存在，则向缓存中插入该组 key-value 。如果插入操作导致关键字数量超过
-capacity ，则应该 逐出 最久未使用的关键字。
+。
+ void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value
+  ；如果不存在，则向缓存中插入该组 key-value 。
+  如果插入操作导致关键字数量超过capacity ，则应该 逐出 最久未使用的关键字。
 函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
 示例：
 输入
-["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
-[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
+  ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+  [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
 输出
-[null, null, null, 1, null, -1, null, -1, 3, 4]
+  [null, null, null, 1, null, -1, null, -1, 3, 4]
 解释
-LRUCache lRUCache = new LRUCache(2);
-lRUCache.put(1, 1); // 缓存是 {1=1}
-lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
-lRUCache.get(1);    // 返回 1
-lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
-lRUCache.get(2);    // 返回 -1 (未找到)
-lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}
-lRUCache.get(1);    // 返回 -1 (未找到)
-lRUCache.get(3);    // 返回 3
-lRUCache.get(4);    // 返回 4  */
+  LRUCache lRUCache = new LRUCache(2);
+  lRUCache.put(1, 1); // 缓存是 {1=1}
+  lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}
+  lRUCache.get(1);    // 返回 1
+  lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}
+  lRUCache.get(2);    // 返回 -1 (未找到)
+  lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}
+  lRUCache.get(1);    // 返回 -1 (未找到)
+  lRUCache.get(3);    // 返回 3
+  lRUCache.get(4);    // 返回 4  */
 
 struct DLinkedList {
   int key;
@@ -99,8 +100,10 @@ class LRUCache {
   int capacity_;
 };
 
-// 哈希表+双向链表。双向链表记录访问优先级，访问过就置首，内部要同时记录key和value，以便四个辅助函数删除结点、新增结点到头部，移动结点到头部。删除末尾结点
-// 删除末尾结点需要返回值，其key用于哈希表删除。构造函数初始化，要初始化虚拟头、尾结点，并将其链接。同时更新容量capacity
+// 哈希表+双向链表。双向链表记录访问优先级
+// 访问过就置首，内部要同时记录key和value，以便四个辅助函数删除结点、新增结点到头部
+// 删除末尾结点需要返回值，其key用于哈希表删除。
+// 构造函数初始化，要初始化虚拟头、尾结点，并将其链接。同时更新容量capacity
 class LRUCache1 {
  public:
   LRUCache1(int _capacity) {

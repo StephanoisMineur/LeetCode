@@ -48,8 +48,10 @@ ListNode* mergeKLists(vector<ListNode*>& lists) {
   return mergeKHelper(lists, 0, lists.size() - 1);
 }
 
-// 传统方法，设置一个链表ans,与vec每一个元素合并，其时间复杂度是O(k2n)，因为要执行k次，最长为kn的链表，空间复杂度O(1);
-// 分治方法，对将vec不断两两分割，设置左右标记，左闭右闭区间，作为传参。时间复杂度O(logk*kn)，空间复杂度O(logk)，因为递归logk次栈空间
+// 传统方法，设置一个链表ans,与vec每一个元素合并
+// 其时间复杂度是O(k2n)，因为要执行k次，最长为kn的链表，空间复杂度O(1);
+// 分治方法，对将vec不断两两分割，设置左右标记，左闭右闭区间，作为传参。
+// 时间复杂度O(logk*kn)，空间复杂度O(logk)，因为递归logk次栈空间
 ListNode* merge1(ListNode* l1, ListNode* l2) {
   ListNode* dummy = new ListNode(0);
   ListNode* p = dummy;
@@ -79,7 +81,8 @@ ListNode* mergeKLists1(vector<ListNode*>& lists) {
 }
 
 // 方法三，优先队列合并。先将vec各个链表头结点压入，注意，如果为空，则不应该压入。
-// 由于要优先级队列要比较大小，则要重置结构体，内含值和结点。主函数中，弹出top元素，将其ptr指针链接到p，并检测ptr是否有next，有即压入。
+// 由于要优先级队列要比较大小，则要重置结构体，内含值和结点。
+// 主函数中，弹出top元素，将其ptr指针链接到p，并检测ptr是否有next，有即压入。
 // 队列长度k，空间复杂度O(k)。每个元素插入和删除均为logk，共有nk个元素，故时间复杂度O(nk*logk)。
 // 默认大顶堆，重载<因为小的元素要下沉，less<>。小顶堆，重载>因为大的元素要下沉，greater<>。
 struct Status {

@@ -10,7 +10,8 @@
 示例 3：
   输入：head = []
   输出：[]
-进阶：你可以在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序吗？ */
+进阶：
+  你可以在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序吗？ */
 
 ListNode* merge(ListNode* l1, ListNode* l2) {
   ListNode* dummy = new ListNode(-1);
@@ -43,8 +44,11 @@ ListNode* sortList(ListNode* head) {
   return merge(head1, head2);
 }
 
-// 推荐自底向上归并排序，时间复杂度O(nlogn)空间复杂度O(1)。排除空指针后，先求链表总长度。设置虚拟头指针，将链表分为subLen从1到总长,以2的倍数遍历一遍.
-// 每一轮遍历，p和pre都必须按照当前dummy初始化。遍历过程中，while保证p存在，实现对剩余段的链接。对分别保存一段、二段头节点。merge后更新pre接收，并更新结点位置
+// 推荐自底向上归并排序，时间复杂度O(nlogn)空间复杂度O(1)。
+// 排除空指针后，先求链表总长度。设置虚拟头指针，将链表分为subLen从1到总长,以2的倍数遍历一遍.
+// 每一轮遍历，p和pre都必须按照当前dummy初始化。
+// 遍历过程中，while保证p存在，实现对剩余段的链接。
+// 对分别保存一段、二段头节点。merge后更新pre接收，并更新结点位置
 // 五个临时结点，遍历p，该段起始pre，片段head1，片段head2，剩余片段rest。
 ListNode* merge1(ListNode* l1, ListNode* l2) {
   ListNode* dummy = new ListNode(0);
@@ -74,7 +78,7 @@ ListNode* sortList1(ListNode* head) {
   }
   ListNode* dummy = new ListNode(0, head);            // 必须指向原head
   for (int subLen = 1; subLen < len; subLen <<= 1) {  // *=2也可以使用<<1代替
-    p = dummy->next;  // 每一轮的起点head不同
+    p = dummy->next;                                  // 每一轮的起点head不同
     ListNode* pre = dummy;
     while (p) {
       ListNode* head1 = p;
@@ -100,9 +104,12 @@ ListNode* sortList1(ListNode* head) {
   return dummy->next;
 }
 
-// 题目要求时间复杂度O(nlogn)，使用递归分治+合并有序链表方法。从上至下将链表按中央切割，分别对左右两半排序，再用merge函数链接。
-// 递归函数的传参为链表片段的[head,tail)。退出条件为head为空，或head至tail仅有一个结点。必须先断开head->next的联系,再返回head。
-// 快慢指针找中心点。终止条件fast==tail，因为是右开区间。快慢先走一步，如果可能，快再走一步。慢指针为分割点。但此方法空间复杂度为logN
+// 题目要求时间复杂度O(nlogn)，使用递归分治+合并有序链表方法。
+// 从上至下将链表按中央切割，分别对左右两半排序，再用merge函数链接。
+// 递归函数的传参为链表片段的[head,tail)。退出条件为head为空，或head至tail仅有一个结点。
+// 必须先断开head->next的联系,再返回head。
+// 快慢指针找中心点。终止条件fast==tail，因为是右开区间。
+// 快慢先走一步，如果可能，快再走一步。慢指针为分割点。但此方法空间复杂度为logN
 ListNode* sortList2(ListNode* head, ListNode* tail) {
   if (head == nullptr)
     return head;
