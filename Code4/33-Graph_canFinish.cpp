@@ -13,8 +13,8 @@ prerequisites[i] = [ai, bi] ，表示如果要学习课程 ai 则 必须 先学�
   输入：numCourses = 2, prerequisites = [[1,0],[0,1]]
   输出：false
   解释：总共有 2 门课程。学习课程 1
-    之前，你需要先完成​课程 0 ；并且学习课程 0
-    之前，你还应先完成课程 1 。这是不可能的。*/
+        之前，你需要先完成​课程 0 ；并且学习课程 0
+        之前，你还应先完成课程 1 。这是不可能的。*/
 
 bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
   vector<int> inDeg(numCourses);
@@ -46,9 +46,11 @@ bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
   return true;
 }
 
-// dfs1搜索，拓扑排序。额外需要三个变量，edges记录统计过的，每个起点分别能到达什么终点。visited记录结点访问状态，0-未访问，1-搜索中，2-已搜索
+// dfs1搜索，拓扑排序。额外需要三个变量，edges记录统计过的，每个起点分别能到达什么终点。
+// visited记录结点访问状态，0-未访问，1-搜索中，2-已搜索
 // valid记录过程结果。首先一次遍历统计edges，注意标志位为B。其次对每个没有访问过的结点dfs1。
-// dfs1对当前结点u先记录其搜索中。对其指向每一个v，若1-搜索中，则成环，不存在拓扑排序。若0-未搜索，进入下一层迭代。
+// dfs1对当前结点u先记录其搜索中。对其指向每一个v，
+// 若1-搜索中，则成环，不存在拓扑排序。若0-未搜索，进入下一层迭代。
 // 回溯时valid为假可直接返回。为真则要记录u为2-已搜索。时间复杂度和空间复杂度均为O(m+n)
 void dfs1(vector<vector<int>>& edges,
           vector<int>& visited,
@@ -81,9 +83,12 @@ bool canFinish1(int numCourses, vector<vector<int>>& prerequisites) {
   return valid;
 }
 
-// bfs，拓扑排序。统计每个结点指向edges，和每个节点入度indeg。对入度为0结点压入队列。队列弹出u时，减少其指向的v入度，入度为0的再压入
-// 入度有两个作用，第一，选入度为0的作为que起始点，第二，只有经过删减入度后，其值为0的，才能作为新节点压入。
-// 如此返回弹出元素个数visited，若其等于numCourse则所有均被反馈。时间复杂度和空间复杂度均为O(m+n)
+// bfs，拓扑排序。统计每个结点指向edges，和每个节点入度indeg。
+// 对入度为0结点压入队列。队列弹出u时，减少其指向的v入度，入度为0的再压入
+// 入度有两个作用，第一，选入度为0的作为que起始点
+// 第二，只有经过删减入度后，其值为0的，才能作为新节点压入。
+// 如此返回弹出元素个数visited，若其等于numCourse则所有均被反馈。
+// 时间复杂度和空间复杂度均为O(m+n)
 bool canFinish2(int numCourses, vector<vector<int>>& prerequisites) {
   vector<vector<int>> edges(numCourses);
   vector<int> indeg(numCourses, 0);

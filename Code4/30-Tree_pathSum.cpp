@@ -40,9 +40,12 @@ int pathSum(TreeNode* root, int targetSum) {
   return dfs(root, targetSum, sum, umap);
 }
 
-// 前缀树。返回值为该结点能返回路径树数量，传入参数为该结点前路径总和。哈希表记录每种总和，和对应的数量。
-// 初始化哈希表，总和为0的路径，有1种办法。map中寻找当前cur-targerSum路径和的数量，代表以当前cur为终止，起点未知的路径和数量。再加上左右孩子递归返回数量。
-// 回溯时，路径和变化，要删除原路径和的数量。该题中路径总和超过了4个字节long能表达范围，需要使用longlong记录，时间和空间复杂度均为O(n)
+// 前缀树。返回值为该结点能返回路径树数量，传入参数为该结点前路径总和。
+// 哈希表记录每种总和，和对应的数量。
+// 初始化哈希表，总和为0的路径，有1种办法。
+// map中寻找当前cur-targerSum路径和的数量，代表以当前cur为终止，起点未知的路径和数量。
+// 再加上左右孩子递归返回数量。回溯时，路径和变化，要删除原路径和的数量。
+// 该题中路径总和超过了4个字节long能表达范围，需要使用longlong记录，时间和空间复杂度均为O(n)
 unordered_map<long long, int> prefix;
 int dfs1(TreeNode* root, long long cur, int targetSum) {
   if (!root)

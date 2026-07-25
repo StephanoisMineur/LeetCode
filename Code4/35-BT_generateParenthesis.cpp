@@ -32,7 +32,8 @@ vector<string> generateParenthesis(int n) {
   return ans;
 }
 
-// 传参为左、右括号数量。退出条件时path.size==2n。本层广度为，压左还是压右两种情况。
+// 传参为左、右括号数量。退出条件时path.size==2n。
+// 本层广度为，压左还是压右两种情况。
 // 剪支，左括号数必须小于n才可压。右括号数必须小于left个才可压。顺序为先压左，再压右。
 void backtracking1(int n,
                    int left,

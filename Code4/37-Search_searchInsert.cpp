@@ -25,7 +25,7 @@ int searchInsert(vector<int>& nums, int target) {
   return l;
 }
 
-// 二分法。注意位运算替代/2操作，其优先级小于+-*/。
+// 二分法。注意位运算替代/2操作，其优先级小于+-*/
 // 另外，左闭右闭区间，target<=中值，右边界左移，保证target一定大于right。
 // 否则左边界右移，保证target一定小于等于left。left即为大于等于target的第一个数值
 int searchInsert1(vector<int>& nums, int target) {
@@ -44,7 +44,7 @@ int searchInsert2(vector<int>& nums, int target) {
   return lower_bound(nums.begin(), nums.end(), target) - nums.begin();
 }
 
-// 传统左闭右闭写法。元素分四种情况讨论，
+// 传统左闭右闭写法。元素分四种情况讨论
 // 1.比最小的元素还小，2.等于数组中某元素，3.处于数组某区间，4.比最大的元素还大
 int searchInsert3(vector<int>& nums, int target) {
   int left = 0, right = nums.size() - 1;
