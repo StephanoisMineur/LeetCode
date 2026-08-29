@@ -23,7 +23,8 @@ int minPathSum(vector<vector<int>>& grid) {
   return dp[n];
 }
 
-// 一维数组动态规划，以节省空间。dp[j]表示下标i行位置的路径总和，第一行和第一列要特殊处理。因为dp[i][j]取决于dp[i-1][j]和dp[i][j-1]即上和右两个方向
+// 一维数组动态规划，以节省空间。dp[j]表示下标i行位置的路径总和，第一行和第一列要特殊处理。
+// 因为dp[i][j]取决于dp[i-1][j]和dp[i][j-1]即上和右两个方向
 int minPathSum1(vector<vector<int>>& grid) {
   vector<int> dp(grid[0].size(), 0);
   dp[0] = grid[0][0];
@@ -40,7 +41,8 @@ int minPathSum1(vector<vector<int>>& grid) {
   return dp[grid[0].size() - 1];
 }
 
-// 额外添加第0行，如此可不做特殊处理。注意一、虚拟首行元素必须初始化为INT_MAX，否则赋值dp[j]时，取上、左二者最小值时，取上为0，就没有计入真首行元素权重
+// 额外添加第0行，如此可不做特殊处理。
+// 注意一、虚拟首行元素必须初始化为INT_MAX，否则赋值dp[j]时，取上、左二者最小值时，取上为0，就没有计入真首行元素权重
 // 注意二、虚拟首行首元素dp[1]=0，如此虚拟首列全部为INT_MAX，才能在计入真首列dp[1]时，为真实值
 int minPathSum2(vector<vector<int>>& grid) {
   int m = grid.size(), n = grid[0].size();

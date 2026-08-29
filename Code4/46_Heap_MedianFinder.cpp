@@ -1,13 +1,14 @@
 #include "head.h"
 /* 295. 数据流的中位数
-中位数是有序整数列表中的中间值。如果列表的大小是偶数，则没有中间值，中位数是两个中间值的平均值。
+中位数是有序整数列表中的中间值。如果列表的大小是偶数，
+则没有中间值，中位数是两个中间值的平均值。
     例如 arr = [2,3,4] 的中位数是 3 。
     例如 arr = [2,3] 的中位数是 (2 + 3) / 2 = 2.5 。
 实现 MedianFinder 类:
     MedianFinder() 初始化 MedianFinder 对象。
     void addNum(int num) 将数据流中的整数 num 添加到数据结构中。
-    double findMedian() 返回到目前为止所有元素的中位数。与实际答案相差 10-5
-以内的答案将被接受。
+    double findMedian() 返回到目前为止所有元素的中位数。
+    与实际答案相差 10-5 以内的答案将被接受。
 示例 1：
 输入
   ["MedianFinder", "addNum", "addNum", "findMedian", "addNum", "findMedian"]
@@ -54,9 +55,11 @@ class MedianFinder {
   priority_queue<int, vector<int>, greater<>> que2;
 };
 
-// 方法一，优先队列，大顶堆Less维护元素小于等于中位数，其元素最大，靠近中位数。小顶堆greater维护元素>中位数，其首元素最小，靠近中位数
+// 方法一，优先队列，大顶堆Less维护元素小于等于中位数，其元素最大，靠近中位数。
+// 小顶堆greater维护元素>中位数，其首元素最小，靠近中位数
 // 正常情况下，minQue==maxQue说明总数数为偶数，minQue=maxQue+1说明总数量为奇数。
-// addNum元素，如果minQue存在且待压入元素小于minQue首元素，压入minQue。如果minQue过长，则将其首压入maxQue，再弹出minQue首。反之亦然。
+// addNum元素，如果minQue存在且待压入元素小于minQue首元素，压入minQue。
+// 如果minQue过长，则将其首压入maxQue，再弹出minQue首。反之亦然。
 // findMedian要看总数量为奇数或偶数，选择弹出minQue首，或者minQue和maxQue两个首元素的平均数
 class MedianFinder1 {
  public:
@@ -90,11 +93,15 @@ class MedianFinder1 {
   priority_queue<int, vector<int>, greater<>> maxQue;
 };
 
-// 初始思路是multiuset排序，利用下标为(n-1)/2和n/2的两个元素，无视奇偶，迭代器访问并求平均。但可以有序集合+双指针优化
+// 初始思路是multiuset排序，利用下标为(n-1)/2和n/2的两个元素，无视奇偶
+// 迭代器访问并求平均。但可以有序集合+双指针优化
 // addNum之中，先求原数组长度n，再插入。如果n==0首次插入，left和right初始化begin。
-// 表达式n&1意为原长度为奇数，right和left处于同一位置，根据num大小决定左、右指针移动方向。若原长度为偶数，left和right错一，分三种情况
-// num处于(left,right)之中，左右指针中央对中。num>=right，left右移挪至right位。num<=left，right左移。
-// multiset特性，相等元素插入，新元素位于老元素之右，故若num==left，新插入的num已经将left和right隔开。left要人工保持和right对正
+// 表达式n&1意为原长度为奇数，right和left处于同一位置，根据num大小决定左、右指针移动方向。
+// 若原长度为偶数，left和right错一，分三种情况
+// num处于(left,right)之中，左右指针中央对中。
+// num>=right，left右移挪至right位。num<=left，right左移。
+// multiset特性，相等元素插入，新元素位于老元素之右，故若num==left，新插入的num已经将left和right隔开。
+// left要人工保持和right对正
 class MedianFinder2 {
  public:
   MedianFinder2() {

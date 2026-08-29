@@ -20,7 +20,8 @@ vector<vector<int>> generate(int numRows) {
   return ans;
 }
 
-// 杨辉三角性质，第i行（从0开始）有i+1个元素。每行首尾元素[0][i]均为1，每行第j个元素，等于上一行j-1元素和j元素之和。
+// 杨辉三角性质，第i行（从0开始）有i+1个元素。
+// 每行首尾元素[0][i]均为1，每行第j个元素，等于上一行j-1元素和j元素之和。
 // 直接在二维数组上操作。但必须初始化行数。
 vector<vector<int>> generate1(int numRows) {
   vector<vector<int>> dp(numRows);

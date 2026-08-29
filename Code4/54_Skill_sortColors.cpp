@@ -26,7 +26,8 @@ void sortColors(vector<int>& nums) {
   }
 }
 
-// 方法一，两次遍历，利用慢指针ptr，和swap函数，先排所有0到最前，然后从0的末尾开始，排1到最前，时间复杂度O(n)
+// 方法一，两次遍历，利用慢指针ptr，和swap函数
+// 先排所有0到最前，然后从0的末尾开始，排1到最前，时间复杂度O(n)
 void sortColors1(vector<int>& nums) {
   int ptr = 0;
   for (int i = 0; i < nums.size(); i++) {
@@ -38,8 +39,10 @@ void sortColors1(vector<int>& nums) {
       swap(nums[i], nums[ptr++]);
   }
 }
-// 方法二，双指针，ptr0和ptr1记录下一个即将赋值的位置。先换1，再换0。如果换0后，ptr1>ptr0，说明将1队列的队首换走了。
-// 此时要将该元素与ptr1再对换，将其换到1队列队尾。注意，换0时，无论换1与否，ptr1和ptr0均要增大
+// 方法二，双指针，ptr0和ptr1记录下一个即将赋值的位置。
+// 先换1，再换0。如果换0后，ptr1>ptr0，说明将1队列的队首换走了。
+// 此时要将该元素与ptr1再对换，将其换到1队列队尾。
+// 注意，换0时，无论换1与否，ptr1和ptr0均要增大
 void sortColors2(vector<int>& nums) {
   int ptr0 = 0, ptr1 = 0;
   for (int i = 0; i < nums.size(); i++) {
@@ -56,7 +59,8 @@ void sortColors2(vector<int>& nums) {
   }
 }
 
-// 方法三，双指针p0和p2，初始化为首\尾位置。循环遍历i一旦大于p2即终止。num[i]==2，将其置换到p2位置并更新，考虑到换过来的还可能是2，故要while
+// 方法三，双指针p0和p2，初始化为首\尾位置。循环遍历i一旦大于p2即终止。
+// num[i]==2，将其置换到p2位置并更新，考虑到换过来的还可能是2，故要while
 // 若num[i]==0则交换i和p0，若num[i]==1，不做任何操作
 void sortColors3(vector<int>& nums) {
   int p0 = 0, p2 = nums.size() - 1;

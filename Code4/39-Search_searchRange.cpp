@@ -33,8 +33,10 @@ vector<int> searchRange(vector<int>& nums, int target) {
   return {l, r};
 }
 
-// 单独设立二分法函数，同时寻找第一个大于等于target的位置，为left（target<=nums[mid]，即使相等也右指针左移）。
-// 第一个大于target的位置为right（target<nums[mid]，相等时左指针右移）,最后检查[left,right-1]区间合理性
+// 单独设立二分法函数，同时寻找第一个大于等于target的位置
+// 为left（target<=nums[mid]，即使相等也右指针左移）。
+// 第一个大于target的位置为right（target<nums[mid]，相等时左指针右移）
+// 最后检查[left,right-1]区间合理性
 int binarySearch1(vector<int>& nums, int target, bool lower) {
   int l = 0, r = nums.size() - 1;
   while (l <= r) {

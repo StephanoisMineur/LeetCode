@@ -27,8 +27,10 @@ int majorityElement(vector<int>& nums) {
   return tmp;
 }
 
-// 推荐使用Boyer-Moore投票算法。设置计数器cnt为0。当前众数候选值candidate（任意）。遍历每个元素，如candidate==num，则计数加一
-// 如果不等，则计数减一，若cnt为负，candidate要置换为当前num，并更新计数为cnt。可以设想双方夺旗场景。cnt实质是当前众数与其余新值的差
+// 推荐使用Boyer-Moore投票算法。设置计数器cnt为0。当前众数候选值candidate（任意）。
+// 遍历每个元素，如candidate==num，则计数加一
+// 如果不等，则计数减一，若cnt为负，candidate要置换为当前num，并更新计数为cnt。
+// 可以设想双方夺旗场景。cnt实质是当前众数与其余新值的差
 int majorityElement1(vector<int>& nums) {
   int cnt = 0;
   int candidate = 0;
@@ -46,7 +48,8 @@ int majorityElement1(vector<int>& nums) {
   return candidate;
 }
 
-// 方法一，哈希表记录每个元素出现次数，若大于n/2就返回。时间、空间复杂度均为O(n)。方法二，排序并取下标为n/2的元素值，时间复杂度O(nlogn)，空间复杂度log(n)
+// 方法一，哈希表记录每个元素出现次数，若大于n/2就返回。时间、空间复杂度均为O(n)。
+// 方法二，排序并取下标为n/2的元素值，时间复杂度O(nlogn)，空间复杂度log(n)
 int majorityElement2(vector<int>& nums) {
   sort(nums.begin(), nums.end());
   return nums[nums.size() / 2];

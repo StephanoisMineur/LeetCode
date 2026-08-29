@@ -34,11 +34,15 @@ int findKthLargest(vector<int>& nums, int k) {
   return nums[k - 1];
 }
 
-// 对于set和map，greater<>是从大到小排序。对于优先队列，greater<>是小顶堆。但如此空间复杂度O(nlogn)不符合题意
-// 快速排序。专职函数无返回值，每轮排序仅在[start,end]中进行，如作为传入参数，第k大的元素下标为k-1，也传入。退出条件为已排下标index等于第k大下标
-// 选定哨兵（随机生成）放置队首，设置index为待交换点。遍历其后所有元素，大于等于标杆的靠前，小的自然靠后。挪动哨兵至应有位置index
+// 对于set和map，greater<>是从大到小排序。
+// 对于优先队列，greater<>是小顶堆。但如此空间复杂度O(nlogn)不符合题意
+// 快速排序。专职函数无返回值，每轮排序仅在[start,end]中进行
+// 如作为传入参数，第k大的元素下标为k-1，也传入。退出条件为已排下标index等于第k大下标
+// 选定哨兵（随机生成）放置队首，设置index为待交换点。
+// 遍历其后所有元素，大于等于标杆的靠前，小的自然靠后。挪动哨兵至应有位置index
 // 注意，index要回退一位，到已排序部分的最后一位，然后与队首交换，如此index即为队首应该在的位置。
-// 若已排位index大于k，说明在前半部分，消除相等元素影响，index--，在[start,index)继续排序，同理，若已排位index小于k，后半部分，index++消除相等元素影响，在(index,end]内排序
+// 若已排位index大于k，说明在前半部分，消除相等元素影响，index--，在[start,index)继续排序
+// 同理，若已排位index小于k，后半部分，index++消除相等元素影响，在(index,end]内排序
 // 时间复杂度O(n)因为引入了随机化加速，空间复杂度O(logn)因为递归栈空间
 void quickSort1(vector<int>& nums, int start, int end, int target) {
   if (start > end)
