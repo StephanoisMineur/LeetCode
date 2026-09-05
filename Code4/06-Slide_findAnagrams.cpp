@@ -7,14 +7,14 @@
   输入: s = "cbaebabacd", p = "abc"
   输出: [0,6]
   解释: 起始索引等于 0 的子串是 "cba", 它是
-    "abc" 的异位词。 起始索引等于 6 的子串是 "bac", 它是 "abc" 的异位词。
+      "abc" 的异位词。 起始索引等于 6 的子串是 "bac", 它是 "abc" 的异位词。
 示例 2:
   输入: s = "abab", p = "ab"
   输出: [0,1,2]
   解释:
-    起始索引等于 0 的子串是 "ab", 它是 "ab" 的异位词。
-    起始索引等于 1 的子串是 "ba", 它是 "ab" 的异位词。
-    起始索引等于 2 的子串是 "ab", 它是 "ab" 的异位词。
+      起始索引等于 0 的子串是 "ab", 它是 "ab" 的异位词。
+      起始索引等于 1 的子串是 "ba", 它是 "ab" 的异位词。
+      起始索引等于 2 的子串是 "ab", 它是 "ab" 的异位词。
 提示:
     1 <= s.length, p.length <= 3 * 104
     s 和 p 仅包含小写字母 */
@@ -64,6 +64,45 @@ vector<int> findAnagrams1(string s, string p) {
     sCount[s[i + pLen] - 'a']++;
     if (sCount == pCount)
       ans.push_back(i + 1);
+  }
+  return ans;
+}
+
+vector<int> findAnagrams2(string s, string p) {
+  vector<int> cnt(26, 0);
+  int diff = 0;
+  for (char c : p) {
+    int idx = c - 'a';
+    if (cnt[idx] == 0) {
+      diff++;
+    }
+    cnt[idx]++;
+  }
+  int m = p.size();
+  vector<int> ans;
+  for (int i = 0; i < s.size(); ++i) {
+    int idx = s[i] - 'a';
+    if (cnt[idx] == 0) {
+      diff++;
+    } else if (cnt[idx] == 1) {
+      diff--;
+    }
+    cnt[idx]--;
+
+    if (i < m - 1) {
+      continue;
+    }
+    if (diff == 0) {
+      ans.push_back(i - m + 1);
+    }
+    // 移出窗口左边字符
+    int leftIdx = s[i - m + 1] - 'a';
+    if (cnt[leftIdx] == -1) {
+      diff--;
+    } else if (cnt[leftIdx] == 0) {
+      diff++;
+    }
+    cnt[leftIdx]++;
   }
   return ans;
 }

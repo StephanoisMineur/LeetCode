@@ -33,7 +33,7 @@ void moveZeroes1(vector<int>& nums) {
   return;
 }
 
-// 方法二，参考快排，一次遍历,对只要非0元素，就交换位置
+// 方法二，参考快排，一次遍历，对只要非0元素，就交换位置
 void moveZeroes2(vector<int>& nums) {
   int j = 0;
   for (int i = 0; i < nums.size(); i++) {

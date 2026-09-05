@@ -28,8 +28,8 @@ int subarraySum(vector<int>& nums, int k) {
 }
 
 // 前缀和+哈希表。pre记录[0,i]连续数组和，核心是pre[i]-pre[j]==k的判断。
-// umap键为某连续数组和，值为该和出现次数。初始化和为0数组次数为1。
-// 寻找pre[i]-k的值，之前是否出现过，若有，就叠加上其出现的次数。
+// umap键为某连续数组和，值为该和出现次数。初始化，和为0数组次数为1。
+// 寻找pre[i]-k的值，之前是否出现。若有，就叠加上其出现的次数。
 // 最后，记录当前pre[i]出现次数+1
 int subarraySum1(vector<int>& nums, int k) {
   unordered_map<int, int> umap;

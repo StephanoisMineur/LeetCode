@@ -47,8 +47,8 @@ string minWindow(string s, string t) {
   return len == INT_MAX ? "" : s.substr(index, len);
 }
 
-// 额外添加对umap判断函数，对于origin内每个元素，检测其数量是否大于滑动窗口中元素数量。
-// 是即为假，左指针可以不移动了
+// umap不能直接比较，需额外添加对umap判断函数
+// 对于origin内每个元素，检测其数量是否大于滑动窗口中元素数量。是即为假，左指针可以不移动了
 // 双哈希表记录每个字母及其出现次数，一个表为t，记为ori，一个表为s内窗口，记为cnt。
 // 先填充ori表。初始化left、right=-1两个变量。
 unordered_map<char, int> origin, window;

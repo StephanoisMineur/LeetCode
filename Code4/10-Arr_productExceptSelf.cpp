@@ -43,8 +43,8 @@ vector<int> productExceptSelf1(vector<int>& nums) {
 
 // 空间复杂度O(1)优化，因为输出数组不计入空间复杂度。
 // 将返回ans和左侧乘积L功能合并，右侧乘积R计算和第三次遍历求结果合并。
-// 右侧乘积使用单个int，从末元素向左遍历
-// 原L保存着不含i位，再往左侧的乘积，乘以right即为最终结果ans，再更新右侧乘积值right
+// 右侧乘积right为不含i位，所有右元素的乘积，使用单个int，从末元素向左遍历
+// 原L保存着不含i位，其左侧元素的乘积，乘以right即为最终结果ans，再更新右侧乘积值right
 vector<int> productExceptSelf2(vector<int>& nums) {
   int n = nums.size();
   vector<int> ans(n, 0);

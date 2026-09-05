@@ -57,9 +57,10 @@ int firstMissingPositive1(vector<int>& nums) {
   return n + 1;
 }
 
-// 推荐方法二，置换。将nums[i]元素换至nums[nums[i]-1]位置。
-// 退出条件为二者不相等，或新下标nums[i]-1位置不合法。
-// 最终遍历，nums[i]不是i+1，即返回
+// 推荐方法二，所有元素均置换到合适位置。将nums[i]元素换至nums[nums[i]-1]位置。
+// 退出条件为新下标nums[i]-1位置元素不合法，或二者不相等。注意不一定必然能换到合格的元素
+// 最终遍历，当i位置的元素nums[i]，不是i+1，即返回。
+// 无中途返回，说明是正整数升序，返回n+1
 int firstMissingPositive2(vector<int>& nums) {
   int n = nums.size();
   for (int i = 0; i < n; i++) {
