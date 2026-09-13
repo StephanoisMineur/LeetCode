@@ -105,7 +105,7 @@ void setZeroes2(vector<vector<int>>& matrix) {
 }
 
 // 方法三，标记数组。对出现过0的位置标记为true。
-// 二次遍历中对标记位置零。时间复杂度O(mn)，空间复杂度O(m+n)
+// 二次遍历中，对标记位置零。时间复杂度O(mn)，空间复杂度O(m+n)
 void setZeroes3(vector<vector<int>>& matrix) {
   vector<pair<int, int>> mark;
   for (int i = 0; i < matrix.size(); i++) {

@@ -48,7 +48,7 @@ ListNode* reverseKGroup(ListNode* head, int k) {
 // 主函数，使用[head,tail]记录区间的首尾
 // while内为head存在，先移动tail,不足k不直接退出。如以满足，反转[head,tail]
 // 可以使用C++17新特性tie。利用pre和tail->next对新区间连接，并更新pre,head位置
-// 时间复杂度O(1)
+// 空间复杂度O(1)
 pair<ListNode*, ListNode*> myReverse1(ListNode* head, ListNode* tail) {
   ListNode* pre = tail->next;
   ListNode* p = head;
