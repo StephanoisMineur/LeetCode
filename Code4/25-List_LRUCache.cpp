@@ -2,13 +2,13 @@
 /* 146. LRU 缓存
 请你设计并实现一个满足  LRU (最近最少使用) 缓存 约束的数据结构。
 实现 LRUCache 类：
-    LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存
-    int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1
-。
- void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value
-  ；如果不存在，则向缓存中插入该组 key-value 。
-  如果插入操作导致关键字数量超过capacity ，则应该 逐出 最久未使用的关键字。
-函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
+  LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存
+  int get(int key) 如果关键字 key 存在于缓存中，
+    则返回关键字的值，否则返回 -1。
+  void put(int key, int value) 如果关键字 key 已经存在，
+    则变更其数据值 value；如果不存在，则向缓存中插入该组 key-value 。
+    如果插入操作导致关键字数量超过capacity ，则应该 逐出 最久未使用的关键字。
+  函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。
 示例：
 输入
   ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
@@ -103,7 +103,7 @@ class LRUCache {
 // 哈希表+双向链表。双向链表记录访问优先级
 // 访问过就置首，内部要同时记录key和value，以便四个辅助函数删除结点、新增结点到头部
 // 删除末尾结点需要返回值，其key用于哈希表删除。
-// 构造函数初始化，要初始化虚拟头、尾结点，并将其链接。同时更新容量capacity
+// 构造函数初始化，要初始化虚拟头、尾结点，并将其连接。同时更新容量capacity
 class LRUCache1 {
  public:
   LRUCache1(int _capacity) {

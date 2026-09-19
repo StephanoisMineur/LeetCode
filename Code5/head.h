@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <deque>
 #include <iostream>
 #include <list>
 #include <map>
@@ -36,28 +37,6 @@ struct TreeNode {
       : val(value), left(left), right(right) {}
 };
 
-class Node {  // complex linklist
- public:
-  int val;
-  Node* next;
-  Node* random;
-  Node(int value) {
-    val = value;
-    next = NULL;
-    random = NULL;
-  }
-};
-
-class Node1 {  // binary search tree / double linked circular list
- public:
-  int val;
-  Node1* left;
-  Node1* right;
-  Node1(){};
-  Node1(int value) : val(value), left(NULL), right(NULL) {}
-  Node1(int value, Node1* l, Node1* r) : val(value), left(l), right(r) {}
-};
-
 template <typename T>
 void printVector(const vector<T>& vec) {
   for_each(vec.begin(), vec.end(), [](const auto& val) { cout << val << ","; });
@@ -84,7 +63,7 @@ ListNode* createList(const vector<int>& vec);
 
 void printList(ListNode* list);
 
-TreeNode* sortedArray2BST(vector<int> num);
+TreeNode* sortedArray2BST(const vector<int>& nums);
 
 TreeNode* construct_binary_tree(const vector<int>& vec);
 

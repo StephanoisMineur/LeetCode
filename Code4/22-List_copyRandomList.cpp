@@ -2,8 +2,8 @@
 /* 138. 随机链表的复制
 给你一个长度为 n 的链表，每个节点包含一个额外增加的随机指针 random
 ，该指针可以指向链表中的任何节点或空节点。构造这个链表的 深拷贝。
-深拷贝应该正好由 n 个 全新
-节点组成，其中每个新节点的值都设为其对应的原节点的值。新节点的 next 指针和
+深拷贝应该正好由 n 个 全新节点组成，
+其中每个新节点的值都设为其对应的原节点的值。新节点的 next 指针和
 random指针也都应指向复制链表中的新节点，并使原链表和复制链表中的这些指针
 能够表示相同的链表状态。复制链表中的指针都不应指向原链表中的节点
 。例如，如果原链表中有 X 和 Y 两个节点，其中 X.random -->
@@ -28,6 +28,14 @@ n-1）；如果不指向任何节点，则为  null 。
     0 <= n <= 1000
     -104 <= Node.val <= 104
     Node.random 为 null 或指向链表中的节点。*/
+
+class Node {
+ public:
+  int val;
+  Node* next;
+  Node* random;
+  Node(int value) : val(value), next(nullptr), random(nullptr) {}
+};
 
 Node* copyRandomList(Node* head) {
   if (!head)

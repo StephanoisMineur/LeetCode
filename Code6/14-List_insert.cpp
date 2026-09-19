@@ -25,6 +25,13 @@ null），需要创建一个循环有序列表并返回这个节点。否则。�
      -10^6 <= Node.val <= 10^6
      -10^6 <= insertVal <= 10^6 */
 
+class Node {
+ public:
+  int val;
+  Node* next;
+  Node(int value) : val(value), next(nullptr) {}
+};
+
 Node* insert(Node* head, int insertVal) {
   if (!head) {
     Node* node = new Node(insertVal);

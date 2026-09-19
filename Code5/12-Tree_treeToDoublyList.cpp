@@ -19,12 +19,22 @@
   输入：root = [1]
   输出：[1] */
 
-Node1* treeToDoublyList(Node1* root) {
-  Node1* dummy = new Node1(-1);
+class Node {  // binary search tree / double linked circular list
+ public:
+  int val;
+  Node* left;
+  Node* right;
+  Node() {};
+  Node(int value) : val(value), left(NULL), right(NULL) {}
+  Node(int value, Node* l, Node* r) : val(value), left(l), right(r) {}
+};
+
+Node* treeToDoublyList(Node* root) {
+  Node* dummy = new Node(-1);
   dummy->right = root;
-  Node1* cur = dummy;
-  Node1* pre = nullptr;
-  stack<Node1*> st;
+  Node* cur = dummy;
+  Node* pre = nullptr;
+  stack<Node*> st;
   while (cur || st.size()) {
     if (cur) {
       st.push(cur);
@@ -49,8 +59,8 @@ Node1* treeToDoublyList(Node1* root) {
 // 中序遍历，递归法，保证二叉搜索树从小到大有序。入参为当前结点，无返回值。遇到空结点直接返回
 // 双向链表，需要在当前结点cur基础上，额外保存pre。处理节点时要对两结点相互勾连。最后更新pre为当前cur
 // 循环链表。需要额外保存head，当pre==nullptr，即首次遍历到根节点时，对head赋值。全部dfs结束后，tail即pre位置，头尾相互勾连
-Node1 *head1, *pre1;
-void dfs(Node1* root) {
+Node *head1, *pre1;
+void dfs(Node* root) {
   if (!root)
     return;
   dfs(root->left);
@@ -63,7 +73,7 @@ void dfs(Node1* root) {
   pre1 = root;
   dfs(root->right);
 }
-Node1* treeToDoublyList1(Node1* root) {
+Node* treeToDoublyList1(Node* root) {
   if (!root)
     return nullptr;
   head1 = pre1 = nullptr;
@@ -74,12 +84,12 @@ Node1* treeToDoublyList1(Node1* root) {
 }
 
 // 中序遍历，迭代法
-Node1* treeToDoublyList2(Node1* root) {
+Node* treeToDoublyList2(Node* root) {
   if (!root)
     return root;
-  Node1* cur = root;
-  Node1 *pre = nullptr, *head = nullptr;
-  stack<Node1*> st;
+  Node* cur = root;
+  Node *pre = nullptr, *head = nullptr;
+  stack<Node*> st;
   while (!st.empty() || cur) {
     if (cur) {
       st.push(cur);
@@ -102,10 +112,10 @@ Node1* treeToDoublyList2(Node1* root) {
   return head;
 }
 
-void printNode(Node1* root) {
+void printNode(Node* root) {
   if (!root)
     return;
-  Node1* start = root;
+  Node* start = root;
   do {
     cout << root->val << " ";
     root = root->right;
@@ -113,17 +123,17 @@ void printNode(Node1* root) {
   cout << endl;
 }
 int main() {
-  Node1* root = new Node1(4);
-  root->left = new Node1(2);
-  root->right = new Node1(5);
-  root->left->left = new Node1(1);
-  root->left->right = new Node1(3);
+  Node* root = new Node(4);
+  root->left = new Node(2);
+  root->right = new Node(5);
+  root->left->left = new Node(1);
+  root->left->right = new Node(3);
   printNode(treeToDoublyList(root));
-  Node1* root1 = new Node1(4);
-  root1->left = new Node1(2);
-  root1->right = new Node1(5);
-  root1->left->left = new Node1(1);
-  root1->left->right = new Node1(3);
+  Node* root1 = new Node(4);
+  root1->left = new Node(2);
+  root1->right = new Node(5);
+  root1->left->left = new Node(1);
+  root1->left->right = new Node(3);
   printNode(treeToDoublyList1(root1));
   return 0;
 }

@@ -8,7 +8,9 @@ ListNode* createList(const vector<int>& vec) {
     p->next = n;
     p = n;
   }
-  return dummy->next;
+  ListNode* head = dummy->next;
+  delete dummy;
+  return head;
 }
 
 void printList(ListNode* list) {
@@ -24,7 +26,7 @@ void printList(ListNode* list) {
   cout << "NULLPTR" << endl;
 }
 
-TreeNode* helper(vector<int> nums, int left, int right) {
+TreeNode* helper(const vector<int>& nums, int left, int right) {
   if (left > right)
     return nullptr;
   int mid = (left + right) / 2;
@@ -34,7 +36,7 @@ TreeNode* helper(vector<int> nums, int left, int right) {
   return root;
 }
 
-TreeNode* sortedArray2BST(vector<int> nums) {
+TreeNode* sortedArray2BST(const vector<int>& nums) {
   if (nums.empty())
     return nullptr;
   return helper(nums, 0, nums.size() - 1);

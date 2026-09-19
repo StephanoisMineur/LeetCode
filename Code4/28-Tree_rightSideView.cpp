@@ -80,8 +80,9 @@ vector<int> rightSideView3(TreeNode* root) {
   return ans;
 }
 
-// 广度优先搜索。依旧从左至右遍历，每层最后一个即为最右元素，故无需判断该层哈希表是否存在过，不断更新即可
-// 无需记录最大深度，因为哈希表size即为结点深度数。
+// 广度优先搜索。依旧从左至右遍历，
+// 无需记录最大深度，因为哈希表size即为结点深度数
+// 每层最后一个即为最右元素，故无需判断该层哈希表是否存在过，不断更新即可
 vector<int> rightSideView2(TreeNode* root) {
   queue<pair<TreeNode*, int>> que;
   vector<int> ans;
