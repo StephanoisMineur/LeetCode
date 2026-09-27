@@ -83,7 +83,7 @@ bool canFinish1(int numCourses, vector<vector<int>>& prerequisites) {
   return valid;
 }
 
-// bfs，拓扑排序。统计每个结点指向edges，和每个节点入度indeg。
+// bfs，拓扑排序。统计每个结点指向edges，和每个节点入度indegree。
 // 对入度为0结点压入队列。队列弹出u时，减少其指向的v入度，入度为0的再压入
 // 入度有两个作用，第一，选入度为0的作为que起始点
 // 第二，只有经过删减入度后，其值为0的，才能作为新节点压入。
@@ -114,6 +114,7 @@ bool canFinish2(int numCourses, vector<vector<int>>& prerequisites) {
   }
   return visit == numCourses;
 }
+
 int main() {
   int numCourses1 = 2;
   vector<vector<int>> prerequisites1 = {{1, 0}};
