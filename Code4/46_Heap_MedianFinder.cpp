@@ -100,7 +100,8 @@ class MedianFinder1 {
 // 若原长度为偶数，left和right错一，分三种情况
 // num处于(left,right)之中，左右指针中央对中。
 // num>=right，left右移挪至right位。num<=left，right左移。
-// multiset特性，相等元素插入，新元素位于老元素之右，故若num==left，新插入的num已经将left和right隔开。
+// multiset特性，相等元素插入，新元素位于老元素之右，
+// 故若num==left，新插入的num已经将left和right隔开。
 // left要人工保持和right对正
 class MedianFinder2 {
  public:
@@ -140,6 +141,7 @@ class MedianFinder2 {
   multiset<int> nums;
   multiset<int>::iterator left, right;
 };
+
 int main() {
   MedianFinder medianFinder;
   medianFinder.addNum(1);                     // arr = [1]

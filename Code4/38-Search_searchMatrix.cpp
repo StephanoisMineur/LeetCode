@@ -28,7 +28,7 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
 }
 
 // 注意和题目搜索二维矩阵II的区别。
-// 一次二分查找，将二维矩阵拼接为一维数组。时间复杂度O(logmn)
+// 一次二分查找，将二维矩阵拼接为一维数组。时间复杂度O(logm*n)
 bool searchMatrix1(vector<vector<int>>& matrix, int target) {
   int m = matrix.size(), n = matrix[0].size();
   int left = 0, right = m * n - 1;

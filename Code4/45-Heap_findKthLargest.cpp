@@ -44,6 +44,7 @@ int findKthLargest(vector<int>& nums, int k) {
 // 若已排位index大于k，说明在前半部分，消除相等元素影响，index--，在[start,index)继续排序
 // 同理，若已排位index小于k，后半部分，index++消除相等元素影响，在(index,end]内排序
 // 时间复杂度O(n)因为引入了随机化加速，空间复杂度O(logn)因为递归栈空间
+// 库函数中有 nth_element()
 void quickSort1(vector<int>& nums, int start, int end, int target) {
   if (start > end)
     return;
@@ -78,7 +79,7 @@ int findKthLargest1(vector<int>& nums, int k) {
   return nums[k - 1];
 }
 
-// 直接建堆。
+// 直接建堆
 int findKthLargest2(vector<int>& nums, int k) {
   make_heap(nums.begin(), nums.end());
   for (int i = 0; i < k - 1; i++) {

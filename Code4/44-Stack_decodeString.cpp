@@ -50,7 +50,8 @@ string decodeString(string s) {
 // 遇到[，立刻临时保存当前的str和num入栈，并清除当前str和num。
 // 遇到]，即取出栈顶的str和num，作为上一周期值pre
 // 不断累积叠加[]之内str，最终作为当前str记录。最终返回当前str。
-// 多个数字字符组成大于等于两位数的情况，使用string临时保存字符串，并使用atoi(c_str())返回整型（或使用stoi）
+// 多个数字字符组成大于等于两位数的情况，使用string临时保存字符串，
+// 并使用atoi(c_str())返回整型（或使用stoi）
 string decodeString1(string s) {
   stack<string> st;
   string strChar;

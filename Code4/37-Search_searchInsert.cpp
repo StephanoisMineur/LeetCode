@@ -25,7 +25,7 @@ int searchInsert(vector<int>& nums, int target) {
   return l;
 }
 
-// 二分法。注意位运算替代/2操作，其优先级小于+-*/
+// 二分法。注意位运算替代/2操作，其优先级小于四则运算+-*/
 // 另外，左闭右闭区间，target<=中值，右边界左移，保证target一定大于right。
 // 否则左边界右移，保证target一定小于等于left。left即为大于等于target的第一个数值
 int searchInsert1(vector<int>& nums, int target) {
