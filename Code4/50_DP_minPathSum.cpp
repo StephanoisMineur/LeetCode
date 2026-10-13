@@ -1,7 +1,7 @@
 #include "head.h"
 /* 64. 最小路径和
-给定一个包含非负整数的 m x n 网格 grid
-，请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
+给定一个包含非负整数的 m x n 网格 grid，
+请找出一条从左上角到右下角的路径，使得路径上的数字总和为最小。
 说明：每次只能向下或者向右移动一步。
 示例 1：
   输入：grid = [[1,3,1],[1,5,1],[4,2,1]]
@@ -42,7 +42,8 @@ int minPathSum1(vector<vector<int>>& grid) {
 }
 
 // 额外添加第0行，如此可不做特殊处理。
-// 注意一、虚拟首行元素必须初始化为INT_MAX，否则赋值dp[j]时，取上、左二者最小值时，取上为0，就没有计入真首行元素权重
+// 注意一、虚拟首行元素必须初始化为INT_MAX，
+// 否则赋值dp[j]，取上、左二者最小值时，取上为0，就没有计入真首行元素权重
 // 注意二、虚拟首行首元素dp[1]=0，如此虚拟首列全部为INT_MAX，才能在计入真首列dp[1]时，为真实值
 int minPathSum2(vector<vector<int>>& grid) {
   int m = grid.size(), n = grid[0].size();
@@ -55,11 +56,11 @@ int minPathSum2(vector<vector<int>>& grid) {
   }
   return dp[n];
 }
+
 int main() {
   vector<vector<int>> grid1 = {{1, 3, 1}, {1, 5, 1}, {4, 2, 1}};
   vector<vector<int>> grid2 = {{1, 2, 3}, {4, 5, 6}};
   cout << minPathSum(grid1) << "       " << minPathSum(grid2) << endl;
   cout << minPathSum1(grid1) << "       " << minPathSum1(grid2) << endl;
-
   return 0;
 }

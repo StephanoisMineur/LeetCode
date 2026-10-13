@@ -55,7 +55,7 @@ int longestCommonSubsequence1(string text1, string text2) {
 }
 
 // 一维数组写法。由于dp[i][j]需要依赖上、左、左上三个方向的值，故遍历方向只能从左至右。
-// 使用pre保存左上值
+// 使用pre在每一次遍历行前，保存左上值
 int longestCommonSubsequence2(string text1, string text2) {
   vector<int> dp(text2.size() + 1, 0);
   for (int i = 1; i <= text1.size(); i++) {

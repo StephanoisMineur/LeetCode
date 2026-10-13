@@ -56,8 +56,8 @@ int longestValidParentheses1(string s) {
   return ans;
 }
 
-// 时间复杂度O(n),空间复杂度O(1)。贪心，左右两遍遍历，记录(、)分别出现次数
-// 若相等就求长度，左向右遍历时，若right>left则截断，计数归零
+// 时间复杂度O(n)，空间复杂度O(1)。贪心，左右两遍遍历，记录(和)分别出现次数
+// 若相等就求长度，左向右遍历时，若right>left，则截断，计数归零
 // 从右向左遍历时，若left>right时截断，计数归零。统计两遍遍历最大值
 int longestValidParentheses2(string s) {
   int left = 0, right = 0, ans = 0;

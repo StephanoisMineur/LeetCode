@@ -29,7 +29,8 @@ string longestPalindrome(string s) {
 
 // dp[i][j]表示下标区间[i.j]的字符串是否为回文。
 // 额外记录最终应该返回的，起始点left和长度len，从左下至右上遍历。
-// 一次判断，子串首尾是否相等，如相等，分两种情况讨论：长度小于等于3，直接为真，长度大于3，要看[i+1,j+1]的值
+// 一次判断，子串首尾是否相等，如相等，分两种情况讨论：
+// 长度小于等于3，直接为真，长度大于3，要看[i+1,j-1]的值
 // 二次判断，dp[i][j]是否为真，为真则看该子串长度是否大于原值，如更长，则记录新子串起始点和长度。
 // 最终返回目标子串。注意，一二次遍历不能混同处理
 string longestPalindrome2(string s) {
@@ -49,7 +50,7 @@ string longestPalindrome2(string s) {
   return s.substr(left, maxLen);
 }
 
-// 动态规划时间和空间复杂度均为O(n^2),双指针可以将空间复杂度将为O(1)
+// 动态规划时间和空间复杂度均为O(n^2)，双指针可以将空间复杂度将为O(1)
 void extend1(const string& s, int i, int j, int& left, int& maxLen) {
   while (i >= 0 && j < s.size() && s[i] == s[j]) {
     if (j - i + 1 > maxLen) {

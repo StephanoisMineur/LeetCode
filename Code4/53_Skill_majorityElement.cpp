@@ -48,9 +48,23 @@ int majorityElement1(vector<int>& nums) {
   return candidate;
 }
 
+int majorityElement2(vector<int>& nums) {
+  int ans = 0;
+  int cnt = 0;
+  for (int n : nums) {
+    if (cnt == 0) {
+      ans = n;
+      cnt++;
+    } else {
+      cnt += (ans == n ? 1 : -1);
+    }
+  }
+  return ans;
+}
+
 // 方法一，哈希表记录每个元素出现次数，若大于n/2就返回。时间、空间复杂度均为O(n)。
 // 方法二，排序并取下标为n/2的元素值，时间复杂度O(nlogn)，空间复杂度log(n)
-int majorityElement2(vector<int>& nums) {
+int majorityElement3(vector<int>& nums) {
   sort(nums.begin(), nums.end());
   return nums[nums.size() / 2];
 }
