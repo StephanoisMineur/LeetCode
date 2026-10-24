@@ -1,8 +1,7 @@
 #include "head.h"
-
 /* 713. 乘积小于 K 的子数组
-给你一个整数数组 nums 和一个整数 k ，请你返回子数组内所有元素的乘积严格小于 k
-的连续子数组的数目。
+给你一个整数数组 nums 和一个整数 k ，
+请你返回子数组内所有元素的乘积严格小于 k的连续子数组的数目。
 示例 1：
   输入：nums = [10,5,2,6], k = 100
   输出：8
@@ -30,7 +29,8 @@ int numSubarrayProductLessThanK(vector<int>& nums, int k) {
   return ans;
 }
 
-// 滑动窗口左右边界[j,i]，窗口内积要时刻保持小于k，此时以i为结尾的连续数组，均满足条件。数量为i-j+1个
+// 滑动窗口左右边界[j,i]，窗口内积要时刻保持小于k，
+// 此时以i为结尾的连续数组，均满足条件。数量为i-j+1个
 // 乘积prod最大可能是k*max{nums[i]}，即1e9，不超过INT_MAX，所以不会产生越界问题
 int numSubarrayProductLessThanK1(vector<int>& nums, int k) {
   int prod = 1;

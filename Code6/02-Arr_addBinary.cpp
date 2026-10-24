@@ -1,5 +1,4 @@
 #include "head.h"
-
 /* 二进制求和
 给你两个二进制字符串 a 和 b ，以二进制字符串的形式返回它们的和。
 示例 1：
@@ -28,7 +27,8 @@ string addBinary(string a, string b) {
   return ans;
 }
 
-// carry代表进位，从后向前遍历a、b字符串，注意if判断整型，0值为假，非0值包括正负数均为真
+// carry代表进位，从后向前遍历a、b字符串，
+// 注意if判断整型，0值为假，非0值包括正负数均为真
 // 符号优先级，*/% 大于 += 大于 <<、>> 大于 关系比较符号==
 // 大于按位与&。最后反转字符串不可避免
 string addBinary1(string a, string b) {

@@ -29,7 +29,7 @@ int findDuplicate(vector<int>& nums) {
 // 将i和num[i]建立映射。有重复元素，则某num[i]必入度为2，链表成环
 // do-while语句可以实现快慢指针同一位置起步，但起步允许快走两步、慢走一步。
 // 最终停止在交汇点。慢指针返回起始点0，快、慢每轮各走一步，交汇点即为重复点
-// 时间复杂度O(n),空间复杂度O(1)
+// 时间复杂度O(n)，空间复杂度O(1)
 int findDuplicate1(vector<int>& nums) {
   int slow = 0;
   int fast = 0;
