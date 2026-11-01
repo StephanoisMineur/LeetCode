@@ -49,7 +49,7 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
   return reverseList(head->next);
 }
 
-// 不反转，就要利用栈，或数组将结点数据保存，如此空间复杂度O(m+n)
+// 不反转，就要利用栈、或数组将结点值保存，如此空间复杂度O(m+n)
 // 注意st.pop()弹栈前，一定要判断栈是否为空。否则会报错
 ListNode* addTwoNumbers1(ListNode* l1, ListNode* l2) {
   ListNode* p = l1;
